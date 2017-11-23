@@ -107,27 +107,71 @@ $.ajax({
 //分分页显示
 
 var oLi=document.querySelectorAll(".pageUl li");
-//console.log(oLi);
-
-f1()
-
-console.log(oLi[2].className)
-
-function f1(){	
-	for (var i = 0; i < oLi.length; i++) {
-	//	console.log(oLi[i]);
-		oLi[i].onclick=function(){
-	//		console.log(0);
-			if(oLi[i].className==""){
-				console.log(222)
+//获取移动每个a的高度
+var oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
+//console.log(oLiWidth);
+//闭包
+for(var i = 0; i < oLi.length; i++) {
+	(function() {
+		var self = i;
+		oLi[i].onclick = function() {
+//			console.log(oLi[self].className);
+			if(oLi[self].className=="present"){
+//				获取当前页码，即用于传入ajax请求
+				var page = oLi[self].querySelector("a").innerHTML;
+//				调用函数请求数据
+				ajaxGoods(page);
+			}else if(oLi[self].className=="prevPage"){
+				//ul右移
+				
+				rightPage(oLi[self]);
+			}else{
+				//ul左移
+				leftPage();
 			}
+				
 		}
-	}	
+		
+	})();
 }
-function paging(obj){
-	var pageVal=obj.val();
-	console.log(pageVal);
+function rightPage(obj){
+	//判断范围1-83
+	if(obj.nextElementSibling.querySelector("a").innerHTML==1){
+		return;			
+	}else{
+		$(".pageUl").css("left",oLiWidth*6+"px");
+	}
 }
+
+
+function ajaxGoods(page){
+	$.ajax({
+		type:"GET",
+		url:"http://h6.duchengjiu.top/shop/api_goods.php",
+		data:{
+			"page":page,
+			"pagesize":20
+		},
+		success:function(response){
+//			console.log(response);
+			var html="";
+			for (var i=0;i< response.data.length;i++) {
+				html+=`<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 no">
+				      <img src="${ response.data[i].goods_thumb }" alt="...">
+				      <div class="caption">
+				        <h4><a href="#">${ response.data[i].goods_name }</a></h3>
+				        <p>${ response.data[i].goods_desc }</p>
+				        <p><span>惊喜价</span>￥<span>${ response.data[i].price }</span>元</p>
+				        <p><a href="javascript:;" class="btn btn-default" role="button">加入购物车</a></p>
+				      </div>
+				    </div>`;
+			}
+			$("#goodsList").html(html);
+		}
+	})
+};
+
+
 //分页条移动
 //$(".prevPage").click(function(){
 //	console.log(123)
