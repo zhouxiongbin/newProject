@@ -1,0 +1,54 @@
+section{
+	max-width: 80%;
+	min-width: 760px;
+	margin: 0 auto;
+}
+section .orbSec{
+	/*background: pink;*/
+	/*width: 760px;*/
+}
+.orbTd img{
+	width: 60px;
+	height: 60px;
+}
+.orbAcc{
+	text-align: right;
+  margin-top: 15px;
+}
+hr{
+	margin: 5px;
+}
+.ordAccVid{
+    min-width: 230px;
+    /*max-width: 340px;*/
+    text-align: right;
+    color: #3c3c3c;
+    
+    /*background: red;*/
+}
+.ordAccVidV{
+	padding: 10px 10px 10px 20px;
+	border: 3px solid #f40;
+	min-width: 340px;
+	min-height: 130px;
+	display:inline-block;
+}
+.ordAccVidV h4{
+	padding: 10px;
+}
+
+#orbBtnD{
+	background: #f40;
+	color: #000000;
+	width: 150px;
+	height: 60px;
+	font-size: 25px;
+}
+#orbBtnD:hover{
+	background: wheat;
+	color: #f40;
+}
+.table tr{
+	font-size: 20px;
+	padding-top: 10px;
+}

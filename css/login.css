@@ -1,0 +1,41 @@
+body {
+	position: relative;
+	/*width: 100%;*/
+	/*height: 100%;*/
+}
+
+header,
+section,
+footer {
+	position: absolute;
+}
+
+header {
+	width: 100%;
+	min-width: 740px;
+	height: 50px;
+	/*background: #000000;*/
+}
+
+section {
+	/*padding-top: 20%;*/
+	width: 340px;
+	/*background: red;*/
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: auto; 
+	height: 300px;
+}
+.regTxt,.regHtml{
+	font-size: 40px;
+	color: purple;
+	text-align: center;
+}
+
+.serIpt{
+	width: 300px;
+	margin-left:21.5px ;
+}

@@ -1,9 +1,192 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>社会明||订单</title>
+
+		<link rel="stylesheet" type="text/css" href="css/order.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="./jquery点击弹出登陆窗口_files/lanrenzhijia.css">
+		<script type="text/javascript" src="./jqueryLoginWindow/jquery-1.8.0.min.js.下载"></script>
+
+		<script>
+			jQuery(document).ready(function($) {
+				$('#orbBtnD').click(function() {
+					$('.theme-popover-mask').fadeIn(100);
+					$('#popoverTwo').slideDown(200);
+				})
+				$('.theme-poptit .close').click(function() {
+					$('.theme-popover-mask').fadeOut(100);
+					$('#popoverTwo').slideUp(200);
+				})
+
+			});
+			jQuery(document).ready(function($) {
+				$('#orbNewBtn').click(function() {
+					$('.theme-popover-mask').fadeIn(100);
+					$('#popover').slideDown(200);
+				})
+				$('.theme-poptit .close').click(function() {
+					$('.theme-popover-mask').fadeOut(100);
+					$('#popover').slideUp(200);
+				})
+
+			})
+		</script>
+
 	</head>
+
 	<body>
+
+		<header>
+			<h1>我是头部</h1></header>
+
+		<section>
+			<div class="orbSec">
+
+				<h3>确认订单信息</h3>
+				<table class="table table-hover" id="ordT">
+					<tr>
+						<th>宝贝名称</th>
+						<th>宝贝属性</th>
+						<th>单价</th>
+						<th>数量</th>
+						<th>小计</th>
+					</tr>
+					<!--请求到数据的样式-->
+					<!--<tr>
+						<td><img src="../../img/ga01.png"/></td>
+						<td>名字</td>
+						<td>价格</td>
+						<td>数量</td>
+						<td>小计</td>
+					</tr>-->
+				</table>
+
+				<table class="table table-hover" id="ordTr">
+					<tr>
+						<th>确认地址</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<!--<th><a class="btn " href="javascript:;"></a></th>-->
+						<th><button id="orbNewBtn" class="btn btn-primary btn-xs btn-primary btn-large theme-login">新增地址</button>
+						</th>
+					</tr>
+					<tr>
+						<td>姓名</td>
+						<td>省</td>
+						<td>市</td>
+						<td>区</td>
+						<td>具体</td>
+						<td>电话</td>
+						<td>删除这个地址</td>
+					</tr>
+				</table>
+				<div class="orbAcc">
+					<span>找人代付</span>
+					<span>匿名购买</span>
+					<span>分期</span>
+					<hr />
+					<div class="ordAccVid">
+						<div class="ordAccVidV">
+							<h3>实付款￥：<span id="orbM"></span></h3>
+							<h4>寄送到：<span id="orbChe">请选择地址</span></h4>
+							<h4>收货人：<span id="orbRmb">请先选择地址</span></h4>
+						</div>
+					</div>
+					<p>特别声明：本次交易没有售后，如果你没有选择地址，我们帮你消灭，单收你还有付钱</p>
+					<button class="btn btn-danger" id="orbBtnD">提交订单</button>
+					<p>若价格变动，请在提交订单后联系卖家改价，并查看已买到的宝贝</p>
+				</div>
+
+			</div>
+
+			<!--插件弹窗-->
+			<div class="theme-popover" id="popover" style="display: none;">
+				<div class="theme-poptit">
+					<a href="javascript:;" title="关闭" class="close">×</a>
+					<h3>搬家 是一种任性</h3>
+				</div>
+				<div class="theme-popbod dform">
+					<form class="theme-signin" action="#">
+						<ol>
+							<li>
+								<h4>请正确输入当前的送达地点哦！</h4>
+							</li>
+							<li><strong>收件人：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>电话：</strong>
+								<input class="ipt" type="number" size="20">
+							</li>
+							<li><strong>当前省：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>当前市：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>当前区：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>具体街道：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li>
+								<input class="btn btn-primary" id="orbNewBtnBtn" type="button" value="确　定"></li>
+						</ol>
+					</form>
+				</div>
+			</div>
+
+			<div class="theme-popover-mask" style="display: none;"></div>
+	
+			<div class="theme-popover" id="popoverTwo" style="display: none;">
+				<div class="theme-poptit">
+					<a href="javascript:;" title="关闭" class="close">×</a>
+					<h3>有钱 是一种任性</h3>
+				</div>
+				<div class="theme-popbod dform">
+					
+						<ol>
+							<li>
+								<h4>你的购买的商品！</h4>
+							</li>
+							<!--<li><strong>收件人：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>电话：</strong>
+								<input class="ipt" type="number" size="20">
+							</li>
+							<li><strong>当前省：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>当前市：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>当前区：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>
+							<li><strong>具体街道：</strong>
+								<input class="ipt" type="text" size="20">
+							</li>-->
+						</ol>
+					</form>
+				</div>
+			</div>
+
+		</section>
+
+		<footer>
+			<h2 style="width: 100%;height: 300px;background: gold;">我是脚部</h2></footer>
+
 	</body>
+
+	<script src="../../js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/order.js" type="text/javascript" charset="utf-8"></script>
+
 </html>

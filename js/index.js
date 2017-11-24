@@ -1,3 +1,20 @@
+//判断是否应登录,登录则显示用户头像 用户名
+if(window.localStorage.token){
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])"><span class='glyphicon glyphicon-user'></span></a>
+					<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">${window.localStorage.username}</a>
+			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
+			        <a class="navbar-brand hidden-sm exit" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">退出登录</a>`)
+}
+//退出登录则还原并清空本地存储
+$(".exit").click(function(){
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>
+			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
+			        <a class="navbar-brand hidden-sm register" href="register.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">注册</a>
+			    `)
+	//清空本地存储
+	window.localStorage.clear();
+})
+
 
 //获取商品分类名称
 $.ajax({
@@ -22,13 +39,13 @@ window.onscroll = function(e) {
   var nowTop = document.documentElement.scrollTop || document.body.scrollTop;
 	if(nowTop >= prevObjTop) {
 	    mainNav.style.position = 'fixed';
-	    mainNav.style.marginTop = -parseInt(prevObjTop)+"px";
+	    mainNav.style.marginTop = 0;//-parseInt(prevObjTop)+"px";
 	    mainNav.style.opacity="0.9";
 	   $(".header").css("display","none")
 	}else {
 	    mainNav.style.position = 'relative';
 	    mainNav.style.marginTop = topDis + 'px';
-	     mainNav.style.opacity="1";
+	    mainNav.style.opacity="1";
 	    $(".header").css("display","block")
 	}
 };
@@ -36,7 +53,7 @@ window.onscroll = function(e) {
 function getAllTop(obj) {
   var allTop = obj.offsetTop;
   while(obj = obj.offsetParent) {
-    allTop += obj.offsetTop;
+    allTop = obj.offsetTop;
   }
   return allTop;
 }
@@ -66,15 +83,7 @@ function getAllTop(obj) {
 					</li>`)
 	}
 
-//$.ajax({
-//	type:"GET",
-//	url:" http://h6.duchengjiu.top/shop/api_goods.php",
-//	success:function(response){
-//		console.log(response);
-//
-//		
-//	}
-//})
+
 
 //获取热门商品
 $.ajax({
@@ -84,7 +93,6 @@ $.ajax({
 		"page":1,
 		"pagesize":20
 	},
-	
 	success:function(response){
 		console.log(response);
 		var html="";
@@ -114,9 +122,9 @@ var oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
 allClick(self)
 //批量绑定事件函数
 function allClick(self){
-	var oLi=document.querySelectorAll(".pageUl li");
+	oLi=document.querySelectorAll(".pageUl li");
 	//获取移动每个a的高度
-	var oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
+	oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
 	//console.log(oLiWidth);
 	//闭包
 	for(var i = 0; i < oLi.length; i++) {
@@ -131,11 +139,11 @@ function allClick(self){
 					ajaxGoods(page);
 				}else if(oLi[self].className=="prevPage"){
 					//ul右移
-					movePlace(oLi[self],-6);
+					movePlace(oLi[self],-11);
 				}else if(oLi[self].className=="nextPage"){
 					//ul左移
 	//				console.log("右按钮")
-					movePlace(oLi[self],6);
+					movePlace(oLi[self],11);
 				}
 					
 			}
@@ -148,8 +156,9 @@ function movePlace(obj,number){
 	console.log(obj.className);
 //	console.log(obj.previousElementSibling.querySelector("a").innerHTML);
 	//判断范围
-	if( (obj.className=="prevPage" && obj.nextElementSibling.querySelector("a").innerHTML==1) || (obj.className=="nextPage" && obj.previousElementSibling.querySelector("a").innerHTML ==83 )){
-		allClick(self)			
+	if( (obj.className=="prevPage" && obj.nextElementSibling.querySelector("a").innerHTML==1) || (obj.className=="nextPage" && obj.previousElementSibling.querySelector("a").innerHTML >=83 )){
+		allClick(self);		
+		return;
 	}else{
 //		console.log("左移")
 //		console.log(oLi.length-1)
@@ -187,12 +196,17 @@ function movePlace(obj,number){
 				    </li>`);
 		allClick(self)
 	}
+	allClick(self)
 	
 	
 }
 
 
 function ajaxGoods(page){
+	//判断输入页码是否有商品
+	if(page > 83){
+		return;
+	}
 	$.ajax({
 		type:"GET",
 		url:"http://h6.duchengjiu.top/shop/api_goods.php",
@@ -220,10 +234,10 @@ function ajaxGoods(page){
 };
 
 
-//分页条移动
-//$(".prevPage").click(function(){
-//	console.log(123)
-//	//范围1-
-//	var left=document.querySelector(".pageUl li:nth-child(2)");
-//	console.log(left);
-//})
+//商品搜索
+$(".search span").click(function(){
+	
+	var searchInput=$("#searchInput").val();
+//	console.log(searchInput);
+	location.href="search.html?search_text="+searchInput;
+})

@@ -6,20 +6,11 @@
 		<title>首页</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
-		<style type="text/css">
-			html,body{
-				font-size: 14px;
-			}
-			.aa{
-				height: 50px;
-			}
-			.item img{
-				background-image: 120%;
-			}
-		</style>
+
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top header">
+		<!--头部-->
+		<div class="navbar navbar-inverse  header">
 		    <div class="container">
 		      <div class="navbar-header login">
 		        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,9 +19,11 @@
 		          <span class="icon-bar"></span>
 		          <span class="icon-bar"></span>
 		        </button>
-		        <a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>
-		        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
-		        <a class="navbar-brand hidden-sm register" href="register.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">注册</a>
+		        <div class="login">
+			        <a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>
+			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
+			        <a class="navbar-brand hidden-sm register" href="register.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">注册</a>
+			    </div>
 		      </div>
 		      <div class="navbar-collapse collapse" role="navigation">
 			       <ul class="nav navbar-nav naUl1">
@@ -71,11 +64,11 @@
 		    </div>
 		
 		</div>
-		<div class="afterHeader"></div>
+		<!--<div class="afterHeader"></div>-->
 		<div class="navOut">
 		<nav class="navbar navbar-inverse nav">
 			<div class="Box">
-				<div class="logo"><a href="#"><img src="img/logo.png"/></a></div>
+				<div class="logo"><a href="#"><img src="images/logo.png"/></a></div>
 				<div class="nav">
 					<ul class="navUl" id="navUl">
 						
@@ -83,12 +76,15 @@
 				</div>
 				
 				<div class="search">
-					<input type="text" name="search" id="search" value="" placeholder="输入您需要的商品"/>
+					<input type="text" name="search" id="searchInput" value="" placeholder="输入您需要的商品"/>
 					<span class="glyphicon glyphicon-search"></span>
 				</div>
 			</div>
 		</nav>
 		</div>
+		
+			
+		<!--//轮播-->
 		<section class="container-fluid">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
@@ -101,7 +97,7 @@
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 			    <div class="item active">
-			      <img src="img/slider01.jpg" alt="...">
+			      <img src="images/slider01.jpg" alt="...">
 			      <div class="carousel-caption trunsTxt">
 			      	<p class="trunsTxtSmallP"> Best Collection</p>
 			      	<p class="trunsTxtP">EXCLUSIVE FASHION</p>
@@ -109,7 +105,7 @@
 			      </div>
 			    </div>
 			    <div class="item">
-			      <img src="img/slider02.jpg" alt="...">
+			      <img src="images/slider02.jpg" alt="...">
 			      <div class="carousel-caption trunsTxt">
 			      	<p class="trunsTxtSmallP"> Best Collection</p>/p>
 			      	<p class="trunsTxtP">EXCLUSIVE FASHION</p>
@@ -117,7 +113,7 @@
 			      </div>
 			    </div>
 			    <div class="item">
-			      <img src="img/slider01.jpg" alt="...">
+			      <img src="images/slider01.jpg" alt="...">
 			      <div class="carousel-caption trunsTxt">
 			      	<p class="trunsTxtSmallP"> Best Collection</p>
 			      	<p class="trunsTxtP">EXCLUSIVE FASHION</p>
@@ -137,31 +133,40 @@
 			  </a>
 			</div>
 		</section>
+		
+			
+		<!--阴影四小块-->
 		<div class="container-fluid">
 			<ul class="iconUl" id="iconUl">
 				<li>
-					<img src="img/ga01.png"/>
+					<img src="images/ga01.png"/>
 					<p>Money Back Guarantee</p>
 				</li>
 				<li>
-					<img src="img/ga02.png"/>
+					<img src="images/ga02.png"/>
 					<p>Gift Coupon </p>
 				</li>
 				<li>
-					<img src="img/ga03.png"/>
+					<img src="images/ga03.png"/>
 					<p>Free Shipping</p>
 				</li>
 				<li>
-					<img src="img/ga04.png"/>
+					<img src="images/ga04.png"/>
 					<p>24x7 Support</p>
 				</li>
 			</ul>
 		</div>
 		<div class="container line"><span>Hot Goods</span></div>
 		
+			
+		<!--显示热门商品盒子-->
 		<div class="container goods_Box">
-			<div class="row" id="goodsList"></div>
+			<div class="row" id="goodsList">
+				
+			</div>
 		</div>
+		
+		<!--分页栏-->
 		<div class="container-fluid page">
 			<nav aria-label="Page navigation">
 				<div class="pageUlBox">
@@ -171,17 +176,17 @@
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
 				    </li>
+				    <li class="present"><a href="javascript:;">1</a></li>
+				    <li class="present"><a href="javascript:;">2</a></li>
+				    <li class="present"><a href="javascript:;">3</a></li>
+				    <li class="present"><a href="javascript:;">4</a></li>
+				    <li class="present"><a href="javascript:;">5</a></li>
+				    <li class="present"><a href="javascript:;">6</a></li>
 				    <li class="present"><a href="javascript:;">7</a></li>
 				    <li class="present"><a href="javascript:;">8</a></li>
 				    <li class="present"><a href="javascript:;">9</a></li>
 				    <li class="present"><a href="javascript:;">10</a></li>
 				    <li class="present"><a href="javascript:;">11</a></li>
-				    <li class="present"><a href="javascript:;">12</a></li>
-				    <li class="present"><a href="javascript:;">13</a></li>
-				    <li class="present"><a href="javascript:;">14</a></li>
-				    <li class="present"><a href="javascript:;">15</a></li>
-				    <li class="present"><a href="javascript:;">16</a></li>
-				    <li class="present"><a href="javascript:;">17</a></li>
 				    <li class="nextPage">
 				      <a  href="javascript:;" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
@@ -191,16 +196,19 @@
 				</div>
 			</nav>
 		</div>
+		
+		<!--显示时间部分-->
 		<div class="container-fluid">
 			<div class="clock">
-				<img class="clockMan" src="img/turns03.png"/>
-				<img class="clockPic" src="img/clockTop.png"/>
+				<img class="clockMan" src="images/turns03.png"/>
+				<img class="clockPic" src="images/clockTop.png"/>
 				<ul class="clockUl">
 					
 				</ul>
 			</div>
 		</div>
 		
+		<!--底部-->
 		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
