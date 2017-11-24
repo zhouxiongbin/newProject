@@ -104,43 +104,91 @@ $.ajax({
 })
 
 
+
 //分分页显示
 
 var oLi=document.querySelectorAll(".pageUl li");
-//获取移动每个a的高度
+	//获取移动每个a的高度
 var oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
-//console.log(oLiWidth);
-//闭包
-for(var i = 0; i < oLi.length; i++) {
-	(function() {
-		var self = i;
-		oLi[i].onclick = function() {
-//			console.log(oLi[self].className);
-			if(oLi[self].className=="present"){
-//				获取当前页码，即用于传入ajax请求
-				var page = oLi[self].querySelector("a").innerHTML;
-//				调用函数请求数据
-				ajaxGoods(page);
-			}else if(oLi[self].className=="prevPage"){
-				//ul右移
-				
-				rightPage(oLi[self]);
-			}else{
-				//ul左移
-				leftPage();
+
+allClick(self)
+//批量绑定事件函数
+function allClick(self){
+	var oLi=document.querySelectorAll(".pageUl li");
+	//获取移动每个a的高度
+	var oLiWidth=document.querySelector(".pageUl li a").offsetWidth;
+	//console.log(oLiWidth);
+	//闭包
+	for(var i = 0; i < oLi.length; i++) {
+		(function() {
+			var self = i;
+			oLi[self].onclick = function() {
+				console.log(oLi[self].className);
+				if(oLi[self].className=="present"){
+	//				获取当前页码，即用于传入ajax请求
+					var page = oLi[self].querySelector("a").innerHTML;
+	//				调用函数请求数据
+					ajaxGoods(page);
+				}else if(oLi[self].className=="prevPage"){
+					//ul右移
+					movePlace(oLi[self],-6);
+				}else if(oLi[self].className=="nextPage"){
+					//ul左移
+	//				console.log("右按钮")
+					movePlace(oLi[self],6);
+				}
+					
 			}
-				
-		}
-		
-	})();
-}
-function rightPage(obj){
-	//判断范围1-83
-	if(obj.nextElementSibling.querySelector("a").innerHTML==1){
-		return;			
-	}else{
-		$(".pageUl").css("left",oLiWidth*6+"px");
+		})();
 	}
+	
+};
+//分页栏移动函数
+function movePlace(obj,number){
+	console.log(obj.className);
+//	console.log(obj.previousElementSibling.querySelector("a").innerHTML);
+	//判断范围
+	if( (obj.className=="prevPage" && obj.nextElementSibling.querySelector("a").innerHTML==1) || (obj.className=="nextPage" && obj.previousElementSibling.querySelector("a").innerHTML ==83 )){
+		allClick(self)			
+	}else{
+//		console.log("左移")
+//		console.log(oLi.length-1)
+		var str=[];
+		for (var i = 1; i < oLi.length-1; i++) {
+			str.push(parseInt( oLi[i].querySelector("a").innerHTML));
+		}
+		console.log(str)
+		var str1=[];
+		for (var i = 0; i < str.length; i++) {
+			str1.push(str[i]+number);
+		}
+		console.log(str1)
+		
+		$(".pageUl").html(`<li class="prevPage">
+				      <a href="javascript:;" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>
+				    <li class="present"><a href="javascript:;">${ str1[0]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[1]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[2]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[3]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[4]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[5]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[6]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[7]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[8]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[9]}</a></li>
+				    <li class="present"><a href="javascript:;">${ str1[10]}</a></li>
+				    <li class="nextPage">
+				      <a  href="javascript:;" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				      </a>
+				    </li>`);
+		allClick(self)
+	}
+	
+	
 }
 
 
