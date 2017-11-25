@@ -17,16 +17,26 @@ $(".exit").click(function(){
 
 
 //获取商品分类名称
+
 $.ajax({
 	type: "get",
 	url: "http://h6.duchengjiu.top/shop/api_cat.php",
 	success: function(response) {
 //		console.log(response);
+		var html="";
 		for(var i = 0; i < response.data.length; i++) {
-
-			$("#navUl").append('<li><a href="#">' + response.data[i].cat_name + '</a></li>');
-
+			html+=`<li><a href="#"  class="listBtn" cat_id="${response.data[i].cat_id}">${response.data[i].cat_name }</a></li>`;
+//			console.log(response.data[i].cat_id)
 		}
+		$("#navUl").html(html);
+		$(".listBtn").click(function(e){
+			e.preventDefault();
+			console.log(111)
+ 			var catId=$(this).attr("cat_id");
+			console.log(catId)//没毛病可以打印数据
+			//跳转到分类页面
+			window.location.href='list.html?cat_id='+catId;//跳转过来catId就不是原本打印的数据
+		})
 	}
 });
 
@@ -100,12 +110,13 @@ $.ajax({
 			html+=`<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 no">
 			      <img src="${ response.data[i].goods_thumb }" alt="...">
 			      <div class="caption">
-			        <h4><a href="#">${ response.data[i].goods_name }</a></h3>
+			        <h4><a href="detail.html?goods_id=${response.data[i].goods_id}">${ response.data[i].goods_name }</a></h3>
 			        <p>${ response.data[i].goods_desc }</p>
 			        <p><span>惊喜价</span>￥<span>${ response.data[i].price }</span>元</p>
 			        <p><a href="javascript:;" class="btn btn-default" role="button">加入购物车</a></p>
 			      </div>
 			    </div>`;
+			    
 		}
 		$("#goodsList").html(html);
 	}
@@ -201,7 +212,7 @@ function movePlace(obj,number){
 	
 }
 
-
+//分页按钮显示对应商品
 function ajaxGoods(page){
 	//判断输入页码是否有商品
 	if(page > 83){

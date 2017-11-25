@@ -301,8 +301,8 @@ nav{
     -webkit-box-orient: vertical;
 	-webkit-line-clamp:1;
 }
-/*分页栏*/
 
+/*分页栏*/
 .pageUlBox{
     display: inline-block;
     padding-left: 0;
