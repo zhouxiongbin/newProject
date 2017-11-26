@@ -3,11 +3,11 @@
 	padding: 0;
 }
 
-body {
+body{
 	color: azure;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	background-image: url(images/1.1.jpg);
+	background-image: url(../images/1.1.jpg);
 }
 
 section {
@@ -15,6 +15,9 @@ section {
 	
 }
 
+header{
+	height: 100px;
+}
 section .regImg {
 	min-width: 760px;
 	max-width: 100%;

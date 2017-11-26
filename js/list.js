@@ -10,16 +10,16 @@ function putin(){
 
 //判断是否应登录,登录则显示用户头像 用户名
 if(window.localStorage.token){
-	$(".login").html(`<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])"><span class='glyphicon glyphicon-user'></span></a>
-					<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">${window.localStorage.username}</a>
-			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
-			        <a class="navbar-brand hidden-sm exit" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">退出登录</a>`)
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="index.html"><span class='glyphicon glyphicon-user'></span></a>
+					<a class="navbar-brand hidden-sm login" href="index.html" >${window.localStorage.username}</a>
+			        <a class="navbar-brand hidden-sm ">|</a>
+			        <a class="navbar-brand hidden-sm exit" href="javascript:;">退出登录</a>`)
 }
 //退出登录则还原并清空本地存储
 $(".exit").click(function(){
-	$(".login").html(`<a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>
-			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
-			        <a class="navbar-brand hidden-sm register" href="register.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">注册</a>
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="login.html">登录</a>
+			        <a class="navbar-brand hidden-sm ">|</a>
+			        <a class="navbar-brand hidden-sm register" href="register.html">注册</a>
 			    `)
 	//清空本地存储
 	window.localStorage.clear();

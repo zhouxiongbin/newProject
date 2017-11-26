@@ -2,14 +2,12 @@ if(localStorage.getItem("token")) {
 	alert(localStorage.getItem("username") + "您已经登录成功了！")
 
 	setTimeout(function() {
-		location.href = "../index.html";
-	}, 2000);
+		location.href = "./index.html";
+	}, 1000);
 }
 
 
 $("#lonBtn").click(function(){
-				
-				
 				
 				var username = $('#exampleInputEmail1').val();
 				var password = $('#exampleInputPassword1').val();
@@ -37,9 +35,8 @@ $("#lonBtn").click(function(){
 								
 								if(data.hasOwnProperty(property)){
 									localStorage.setItem(property,data[property]);
+									console.log(localStorage)
 								}
-								
-								
 							}
 							
 							alert(response.message);
@@ -50,7 +47,7 @@ $("#lonBtn").click(function(){
 							if( callbackURL ){
 								window.location.href = callbackURL;
 							}else{
-								window.location.href = "../index.html";
+								window.location.href = "./index.html";
 							}
 							
 						}

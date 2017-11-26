@@ -1,15 +1,25 @@
+//测试登录
+//putIn();
+
+function putIn(){
+	localStorage.avatar="default.png";	
+	localStorage.token="9a72e3a11e5d1292994f73b7f90bfc41";	
+	localStorage.user_id="4417",	
+	localStorage.username="wym123"	
+}
+
 //判断是否应登录,登录则显示用户头像 用户名
 if(window.localStorage.token){
-	$(".login").html(`<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])"><span class='glyphicon glyphicon-user'></span></a>
-					<a class="navbar-brand hidden-sm login" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">${window.localStorage.username}</a>
-			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
-			        <a class="navbar-brand hidden-sm exit" href="javascript:;" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">退出登录</a>`)
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="index.html"><span class='glyphicon glyphicon-user'></span></a>
+					<a class="navbar-brand hidden-sm login" href="index.html" >${window.localStorage.username}</a>
+			        <a class="navbar-brand hidden-sm ">|</a>
+			        <a class="navbar-brand hidden-sm exit" href="javascript:;">退出登录</a>`)
 }
 //退出登录则还原并清空本地存储
 $(".exit").click(function(){
-	$(".login").html(`<a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>
-			        <a class="navbar-brand hidden-sm " onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">|</a>
-			        <a class="navbar-brand hidden-sm register" href="register.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">注册</a>
+	$(".login").html(`<a class="navbar-brand hidden-sm login" href="login.html">登录</a>
+			        <a class="navbar-brand hidden-sm ">|</a>
+			        <a class="navbar-brand hidden-sm register" href="register.html">注册</a>
 			    `)
 	//清空本地存储
 	window.localStorage.clear();
@@ -104,7 +114,7 @@ $.ajax({
 		"pagesize":20
 	},
 	success:function(response){
-		console.log(response);
+//		console.log(response);
 		var html="";
 		for (var i=0;i< response.data.length;i++) {
 			html+=`<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 no">
@@ -113,15 +123,42 @@ $.ajax({
 			        <h4><a href="detail.html?goods_id=${response.data[i].goods_id}">${ response.data[i].goods_name }</a></h3>
 			        <p>${ response.data[i].goods_desc }</p>
 			        <p><span>惊喜价</span>￥<span>${ response.data[i].price }</span>元</p>
-			        <p><a href="javascript:;" class="btn btn-default" role="button">加入购物车</a></p>
+			        <p><a href="javascript:;" class="btn btn-default" goods_id="${response.data[i].goods_id}" role="button">加入购物车</a></p>
 			      </div>
 			    </div>`;
 			    
 		}
 		$("#goodsList").html(html);
+		//加入购物车
+		$(".no .btn").click(function(){
+//			保存商品id
+			var goods_id=$(this).attr("goods_id");
+			console.log(goods_id);
+			//ajax加入购物车
+			changeCart(goods_id,2,localStorage.token,localStorage.user_id)
+			
+//			location.href="cart.html?goods_id="+goods_id;
+		})
 	}
+
 })
 
+//ajax更新购物车  number=0 即为删除 
+function changeCart(goods_id,number,token,user_id){
+	console.log(goods_id);
+	console.log(token);
+	$.ajax({
+				type:"POST",
+				url:"http://h6.duchengjiu.top/shop/api_cart.php?token="+token,
+				data:{
+					"goods_id":goods_id,
+					"number":number,
+				},
+				success:function(response){
+					console.log(response);//
+				}
+	});
+}
 
 
 //分分页显示
@@ -240,6 +277,7 @@ function ajaxGoods(page){
 				    </div>`;
 			}
 			$("#goodsList").html(html);
+			
 		}
 	})
 };
@@ -252,3 +290,5 @@ $(".search span").click(function(){
 //	console.log(searchInput);
 	location.href="search.html?search_text="+searchInput;
 })
+
+

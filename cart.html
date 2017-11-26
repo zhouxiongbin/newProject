@@ -2,24 +2,82 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>我的购物</title>
+		<title>购物车</title>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="css/cart.css"/>
 	</head>
 	<body>
+		<!--头部-->
+		<div class="navbar navbar-inverse  header">
+		    <div class="container">
+		      <div class="navbar-header login">
+		        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+		          <span class="sr-only">Toggle navigation</span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		        </button>
+		        <div class="login">
+		        	<!--<a class="navbar-brand hidden-sm login" href="login.html" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'navbar-首页'])">登录</a>-->
+			        <a class="navbar-brand hidden-sm login" href="login.html" >登录</a>
+			        <a class="navbar-brand hidden-sm ">|</a>
+			        <a class="navbar-brand hidden-sm register" href="register.html">注册</a>
+			    </div>
+		      </div>
+		      <div class="navbar-collapse collapse" role="navigation">
+			       <ul class="nav navbar-nav naUl1">
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+			       		<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+						<li><a  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'expo'])"></a></li>
+						<li class="hidden-sm hidden-md">
+							<a href="javascript:;" target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'v2doc'])"><span class="glyphicon glyphicon-flag pic"></span></a>
+						</li>
+						<li>
+							<a href="javascript:;" class="pic" target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'v3doc'])"><span class="glyphicon glyphicon-cloud pic"></a>
+						</li>
+						<li>
+							<a href="javascript:;" class="pic" target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'v4doc'])"><span class="glyphicon glyphicon-star-empty pic"></span></a>
+						</li>
+						<li>
+							<a href="javascript:;"class="pic"  target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'less'])"><span class="glyphicon glyphicon-signal pic"></span></a>
+						</li>
+						<li>
+							<a href="javascript:;" class="pic" target="_blank" onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'jquery'])"><span class="glyphicon glyphicon-camera pic"></span></a>
+						</li>
+						
+					</ul>
+			    
+		        <ul class="nav navbar-nav navbar-right hidden-sm">
+		          <li class="headerCart">
+		          	<a href="cart.html"  onclick="_hmt.push(['_trackEvent', 'navbar', 'click', 'about'])">
+		          		我的购物车
+		          		<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+		          	</a>
+		          </li>
+		        </ul>
+		      </div>
+		    </div>
+		
+		</div>
+		
+		
 		<!--响应式-->
 		<div class="container">
 			<div class="shopBox">
 				<h3>我的购物车</h3>
 				<ul class="goodsUl">
 					<li>
-						<input type="checkbox" name="checkbox" id="checkbox" value="" />
+						<input type="checkbox"  name="checkbox" id="checkbox" value="checked" />
 						<b>全选</b>
 					</li>
 					<li><em>商品详情</em></li>
 					<li><em>单价(元)</em></li>
 					<li><em>数量</em></li>
-					<li><em>小计</em></li>
+					<li><em>小计(元)</em></li>
 					<li><em>操作</em></li>
 					
 				</ul>
@@ -28,39 +86,32 @@
 				<div class="goods_List">
 					
 					<!--每个商品的盒子-->
-					<ul>
+					<!--<ul>
 						<li><input type="checkbox" name="" id="" value="" /></li>
 						<li><img src="http://imgs-qn.iliangcang.com/ware/goods/big/2/253/253286.jpg?t=1476238032"/></li>
 						<li><span>仅重600g便携蓝牙音箱 丹麦设计 专业级音质 防滑防水 长续</span></li>
 						<li><em>520</em></li>
 						<li><input type="number" min="1" name="" id="" value="1" /></li>
 						<li><em>520</em></li>
-						<li><input type="button" name="" id="" value="删除" /></li>
-					</ul>
-					
-					<!--每个商品的盒子-->
-					<ul>
-						<li><input type="checkbox" name="" id="" value="" /></li>
-						<li><img src="http://imgs-qn.iliangcang.com/ware/goods/big/2/253/253286.jpg?t=1476238032"/></li>
-						<li><span>仅重600g便携蓝牙音箱 丹麦设计 专业级音质 防滑防水 长续</span></li>
-						<li><em>520</em></li>
-						<li><input type="number" min="1" name="" id="" value="1" /></li>
-						<li><em>520</em></li>
-						<li><input type="button" name="" id="" value="删除" /></li>
-					</ul>
-					
-					<!--每个商品的盒子-->
-					<ul>
-						<li><input type="checkbox" name="" id="" value="" /></li>
-						<li><img src="http://imgs-qn.iliangcang.com/ware/goods/big/2/253/253286.jpg?t=1476238032"/></li>
-						<li><span>仅重600g便携蓝牙音箱 丹麦设计 专业级音质 防滑防水 长续</span></li>
-						<li><em>520</em></li>
-						<li><input type="number" min="1" name="" id="" value="1" /></li>
-						<li><em>520</em></li>
-						<li><input type="button" name="" id="" value="删除" /></li>
+						<li><input type="button" name="" id="delete" value="删除" /></li>
+					</ul>-->
+				</div>	
+				<!--结算栏-->
+				<div class="order">
+					<ul class="orderUl">
+						<li>
+							<a href="javascript:;" class="remove">删除所选商品</a>
+						</li>
+						<li><a href="javascript:;">清除失效宝贝</a></li>
+						<li><a href="javascript:;">分享给好友</a></li>
+						<li>已选商品<b> 0 </b>件</li>
+						<li><em>运费 6 元</em></li>
+						<li>合计<b> 1314 </b>元</li>
+						<li><a href="order.html">去结算</a></li>
 					</ul>
 				</div>
 			</div>
+			
 		</div>
 		<script src="js/jquery-1.12.3.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>

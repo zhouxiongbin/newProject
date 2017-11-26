@@ -66,6 +66,7 @@ setInterval(function() {
 	if (o==6) {
 		o=1;
 	}
-	$("body").css({"background-image" : 'url("../images/1 ('+ o +').jpg")'});
+	//url(../images/1.1.jpg)
+	$("body").css({"background-image" : 'url("images/1.'+ o +'.jpg")'});
 	o++;
-},5000)
+},3000)
